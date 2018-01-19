@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+for i in {1..1}; do
+
+    echo Figura $i
+    
+    cd $i
+
+    python3 figura.py
+   
+    cd ..
+  
+done
