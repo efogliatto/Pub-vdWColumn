@@ -68,7 +68,7 @@ crg = crg[::100]
 
 plt.plot( [  z/er[-1] for z in erl  ],
           crl,
-          label = 'Berberan-Santos',
+          # label = 'Berberan-Santos',
           linestyle = 'None',
           marker = 'o',
           mfc = 'None')

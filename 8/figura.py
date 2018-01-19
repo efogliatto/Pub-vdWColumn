@@ -99,9 +99,9 @@ plt.plot( file6[1],
 
 # Labels
 
-plt.xlabel('$T_r$')
+plt.xlabel(r'$T_r$')
 
-plt.ylabel('Liquid volume fraction')
+plt.ylabel(r'$z \, / \, H$')
 
 # plt.legend(loc='best')        
 
