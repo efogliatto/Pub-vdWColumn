@@ -18,7 +18,7 @@ file5 = np.loadtxt( 'c_bar_1.000.dat', unpack = True )
 file6 = np.loadtxt( 'c_bar_0.500.dat', unpack = True )
 
 
-plt.style.use('custom') 
+plt.style.use('../custom.mplstyle') 
 
 sp = 150
 

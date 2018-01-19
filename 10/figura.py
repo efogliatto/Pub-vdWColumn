@@ -16,7 +16,7 @@ Er_max = 1e-03
 
 b = 4.0
 
-plt.style.use('custom')
+plt.style.use('../custom.mplstyle')
 
 
 # Load data files

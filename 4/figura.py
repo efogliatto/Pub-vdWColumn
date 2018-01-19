@@ -15,7 +15,7 @@ import numpy as np
 b = 4.0
 
 
-with plt.style.context('custom'):
+with plt.style.context('../custom.mplstyle'):
 
     
     plt.figure()

@@ -8,7 +8,7 @@ import numpy as np
 
 
 
-plt.style.use('custom')
+plt.style.use('../custom.mplstyle')
 
 data = np.loadtxt('Tr_0.900.dat')
 

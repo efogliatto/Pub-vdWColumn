@@ -22,7 +22,7 @@ sigma_2 = np.loadtxt( "sigma_0.0125.dat", unpack = True )
 vdW = np.loadtxt( "vdW.dat", unpack = True )
 
 
-plt.style.use('custom') 
+plt.style.use('../custom.mplstyle') 
 
 plt.plot( sigma_0[4],
           sigma_0[1],

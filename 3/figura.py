@@ -23,7 +23,7 @@ file6 = np.loadtxt( 'Tr_0.500_0.500_cbar_1.000.dat', unpack = True )
 file7 = np.loadtxt( 'Tr_0.500_0.500_cbar_1.000_gas.dat', unpack = True )
 
 
-plt.style.use('custom') 
+plt.style.use('../custom.mplstyle') 
 
 sp = 150
 

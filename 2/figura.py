@@ -24,7 +24,7 @@ file7 = np.loadtxt( 'Tr_0.500_0.500_cbar_1.000_gas.dat', unpack = True )
 
 
 
-plt.style.use('custom') 
+plt.style.use('../custom.mplstyle') 
 
 sp = 150
 
@@ -46,37 +46,37 @@ plt.plot( 1000*file4[0][::-sp],
           file4[1][::-sp],
           linestyle = 'None',
           color = 'k',
-          marker = 'o',
+          marker = '^',
           mfc = 'None')
 
 plt.plot( 1000*file5[0][::sp],
           file5[1][::sp],
           linestyle = 'None',
           color = 'k',
-          marker = 'o',
+          marker = '^',
           mfc = 'None')
 
 plt.plot( 1000*file6[0][::-sp],
           file6[1][::-sp],
           linestyle = 'None',
           color = 'k',
-          marker = 'o',
+          marker = 's',
           mfc = 'None')
 
 plt.plot( 1000*file7[0][::sp],
           file7[1][::sp],
           linestyle = 'None',
           color = 'k',
-          marker = 'o',
+          marker = 's',
           mfc = 'None')
 
 
 
-plt.plot( file1[0]/300, file1[1]*12, label = r'$T_r=0.99$')
+plt.plot( file1[0]/300, file1[1]*12, label = r'$T_r=0.99$', linestyle = '-')
 
-plt.plot( file1[0]/300, file1[2]*12, label = r'$T_r=0.70$')
+plt.plot( file1[0]/300, file1[2]*12, label = r'$T_r=0.70$', linestyle = '-')
 
-plt.plot( file1[0]/300, file1[3]*12, label = r'$T_r=0.50$')
+plt.plot( file1[0]/300, file1[3]*12, label = r'$T_r=0.50$', linestyle = '-')
 
         
 
