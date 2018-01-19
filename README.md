@@ -14,3 +14,5 @@ Descripción de figuras
 8: Fracci\'on de l\'iuido en funci\'on de Tr
 9: Fraccion de volumen en funci\'on de densidad media
 10: Perfiles de densidad con gradiente de temperatura fijo. 3000 lu
+11: Convergencia en malla para Tb = 0.8
+12: Cambio de sigma para Tb = 0.8
