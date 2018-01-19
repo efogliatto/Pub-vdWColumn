@@ -23,8 +23,15 @@ plt.style.use('../custom.mplstyle')
 sigmaList = [0.0125, 0.125, 1.25]
 
 for i,sigma in zip( range(3), sigmaList ):
-   
-    rho = post.scalarProfile( "/users/fogliate/LBRun/vdWColumn/fixedT/CasoD/Caso{}/processor0/2000000/rho".format(i), step = 3, offset = 1 )
+
+    fn = "/users/fogliate/LBRun/vdWColumn/fixedT/CasoD/Caso{}/processor0/2000000/rho".format(i)
+
+    if os.path.exists( fn ):
+
+        os.system("cp {} rho_{}".format(fn,i))
+        
+    
+    rho = post.scalarProfile( "rho_{}".format(i), step = 3, offset = 1 )
 
     intm, ll, rl = post.interphase( rho, width = 0.05 )
 

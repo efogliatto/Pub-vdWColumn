@@ -14,4 +14,4 @@ for i in {1..12}; do
 done
 
 
-eog [1-9]*/*.png &
+# eog [1-9]*/*.png &

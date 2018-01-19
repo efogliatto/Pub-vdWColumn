@@ -23,7 +23,14 @@ plt.style.use('../custom.mplstyle')
 
 for i in range(4):
 
-    rho = post.scalarProfile( "/users/fogliate/LBRun/vdWColumn/Berberan-Santos_et_al_2002/CasoI/Caso{}/processor0/2000000/rho".format(i), step = 3, offset = 1 )
+    fn = "/users/fogliate/LBRun/vdWColumn/Berberan-Santos_et_al_2002/CasoI/Caso{}/processor0/2000000/rho".format(i)
+
+    if os.path.exists( fn ):
+
+        os.system("cp {} rho_{}".format(fn,i))
+        
+    
+    rho = post.scalarProfile( "rho_{}".format(i), step = 3, offset = 1 )
 
     intm, ll, rl = post.interphase( rho, width = 0.05 )
 

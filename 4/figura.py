@@ -24,8 +24,16 @@ with plt.style.context('../custom.mplstyle'):
     # Move over Caso folders
 
     for i in range(4):
+
+
+        fn = "/users/fogliate/LBRun/vdWColumn/Berberan-Santos_et_al_2002/CasoH/Caso{}/processor0/2000000/rho".format(i)
+
+        if os.path.exists( fn ):
+
+            os.system("cp {} rho_{}".format(fn,i))
+        
     
-        rho = post.scalarProfile( "/users/fogliate/LBRun/vdWColumn/Berberan-Santos_et_al_2002/CasoH/Caso{}/processor0/2000000/rho".format(i), step = 3, offset = 1 )
+        rho = post.scalarProfile( "rho_{}".format(i), step = 3, offset = 1 )
 
         intm, ll, rl = post.interphase( rho, width = 0.05 )
 
