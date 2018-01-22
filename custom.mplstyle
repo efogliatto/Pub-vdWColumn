@@ -177,7 +177,7 @@ text.latex.unicode : False # use "ucs" and "inputenc" LaTeX packages for handlin
 #axes.facecolor      : w       # axes background color
 #axes.edgecolor      : k       # axes edge color
 #axes.linewidth      : 1.25     # edge linewidth
-axes.grid           : True   # display grid or not
+# axes.grid           : True   # display grid or not
 #axes.grid.which     : major
 #axes.grid.axis      : both
 #axes.titlesize      : large   # fontsize of the axes title
@@ -243,7 +243,7 @@ axes.prop_cycle    :  cycler('color', 'k') * (  cycler( 'ls', ['-','--',':','-.'
 #xtick.bottom         : True   # draw ticks on the bottom side
 #xtick.major.size     : 4      # major tick size in points
 #xtick.minor.size     : 2      # minor tick size in points
-xtick.minor.visible  : True
+xtick.minor.visible  : False
 #xtick.major.width    : 0.5    # major tick width in points
 #xtick.minor.width    : 0.5    # minor tick width in points
 #xtick.major.pad      : 4      # distance to major tick label in points
@@ -260,7 +260,7 @@ xtick.direction      : in     # direction: in, out, or inout
 #ytick.right          : True   # draw ticks on the right side
 #ytick.major.size     : 4      # major tick size in points
 #ytick.minor.size     : 2      # minor tick size in points
-ytick.minor.visible  : True
+ytick.minor.visible  : False
 #ytick.major.width    : 0.5    # major tick width in points
 #ytick.minor.width    : 0.5    # minor tick width in points
 #ytick.major.pad      : 4      # distance to major tick label in points

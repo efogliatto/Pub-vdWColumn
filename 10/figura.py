@@ -99,7 +99,7 @@ for key, mk in zip(  sorted(analitica.keys(), reverse = True) , mkstyle ):
 
 # Labels
 
-plt.ylabel(r'$\rho_r$')
+plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
 # plt.xlabel(r'$E_r \, / \, E_{r_{max}}$')
 plt.xlabel(r'$z \, / \, H$')
