@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+mkdir -p Figuras
+
 for i in {1..12}; do
 
     echo Figura $i
@@ -8,10 +10,11 @@ for i in {1..12}; do
     cd $i
 
     python3 figura.py
+
+    mv $i.png ../Figuras
    
     cd ..
   
 done
 
-
-# eog [1-9]*/*.png &
+eog Figuras/*.png &

@@ -93,7 +93,7 @@ plt.plot( [  z/er[-1] for z in erg  ],
 
 # Labels
 
-plt.ylabel(r'$\rho_r$')
+plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
 plt.xlabel(r'$z \, / \, H$')
 

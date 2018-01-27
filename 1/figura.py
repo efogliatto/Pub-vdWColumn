@@ -77,7 +77,7 @@ plt.plot( vdW[2], vdW[0], linestyle = '-')
 
 # Labels
 
-plt.ylabel(r'$T_r$')
+plt.ylabel('$T_r$', rotation='horizontal', labelpad=15)
 
 plt.xlabel(r'$\rho_r$')
 

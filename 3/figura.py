@@ -82,7 +82,7 @@ plt.plot( file1[0]/3000, file1[3]*12, label = r'$T_r=0.50$', linestyle = '-')
 
 # Labels
 
-plt.ylabel(r'$\rho_r$')
+plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
 # plt.xlabel('$E_r \, / \, E_{r_{max}}$')
 plt.xlabel(r'$z \, / \, H$')

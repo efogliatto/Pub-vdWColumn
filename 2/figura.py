@@ -83,11 +83,11 @@ plt.plot( file1[0]/300, file1[3]*12, label = r'$T_r=0.50$', linestyle = '-')
 
 # Labels
 
-plt.ylabel(r'$\rho_r$')
+plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
 plt.xlabel(r'$z \, / \, H$')
 
-plt.legend(loc='best')        
+# plt.legend(loc='best')        
 
 plt.savefig( '2.png', format='png', dpi=600 )
 

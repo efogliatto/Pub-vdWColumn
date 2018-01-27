@@ -99,7 +99,7 @@ plt.plot( file6[1],
 
 # Labels
 
-plt.xlabel(r'$T_r$')
+plt.xlabel(r'$T_r$', rotation='horizontal', labelpad=15)
 
 plt.ylabel(r'$z \, / \, H$')
 

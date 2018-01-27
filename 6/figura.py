@@ -108,7 +108,7 @@ plt.plot( [  z/er[-1] for z in erg  ],
 
 # Labels
 
-plt.ylabel(r'$\rho_r$')
+plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
 plt.xlabel(r'$z \, / \, H$')
 
@@ -119,54 +119,3 @@ plt.legend(loc='best')
 plt.savefig( '6.png', format='png', dpi=600 )
 
 # plt.show()
-
-
-
-
-
-
-
-
-# # van Der Waals properties
-
-# Er_max = 1e-03
-
-# b = 4.0
-
-# plt.style.use('custom')
-
-
-# # Move over Caso folders
-
-# for i in range(4):
-
-#     if i == 0:
-    
-#         rho = post.scalarProfile( "Caso{}/processor0/1000000/rho".format(i), step = 3, offset = 1 )
-        
-#         plt.plot([ 1e3 * z * Er_max / (len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = "{} l.u".format(len(rho) - 1))
-
-#     else:
-
-#         rho = post.scalarProfile( "Caso{}/processor0/2000000/rho".format(i), step = 3, offset = 1 )
-
-#         plt.plot([ 1e3 * z * Er_max / (len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = "{} l.u".format(len(rho) - 1))
-
-
-        
-
-# # Labels
-
-# plt.ylabel('$c$')
-
-# plt.xlabel('$10^{3} \cdot E_r$')
-
-# # plt.ylim((0,1))
-
-# plt.xlim((0.2,0.8))
-
-# plt.legend(loc='best')        
-
-# plt.savefig( 'conv_malla.svg', format='svg', dpi=1200 )
-
-# # plt.show()

@@ -39,7 +39,7 @@ with plt.style.context('../custom.mplstyle'):
 
     # Labels
 
-    plt.ylabel(r'$\rho_r$')
+    plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
     plt.xlabel('Reduced height at the vapor-liquid boundary')
 
