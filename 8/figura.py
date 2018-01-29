@@ -66,11 +66,11 @@ sp = 150
 
 
 
-plt.plot( file1[0], file1[3], label = r'$\bar{c} = 1.5$')
+plt.plot( file1[0], file1[3], label = r'$\bar{c} = 1.5$', linestyle = '-')
 
-plt.plot( file2[0], file2[3], label = r'$\bar{c} = 1.0$')
+plt.plot( file2[0], file2[3], label = r'$\bar{c} = 1.0$', linestyle = '-')
 
-plt.plot( file3[0], file3[3], label = r'$\bar{c} = 0.5$')
+plt.plot( file3[0], file3[3], label = r'$\bar{c} = 0.5$', linestyle = '-')
 
 plt.plot( file4[1],
           file4[2]/300,
