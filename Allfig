@@ -3,7 +3,7 @@
 
 mkdir -p Figuras
 
-for i in {1..12}; do
+for i in {1..5}; do
 
     echo Figura $i
     

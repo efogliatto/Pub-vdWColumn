@@ -1,6 +1,8 @@
 import os
 
-import postLBRun as post
+import vdWColumn as vdw
+
+import vdWColumn.postLBRun as post
 
 import matplotlib.pyplot as plt
 
@@ -24,16 +26,15 @@ with plt.style.context('../custom.mplstyle'):
     
     # Move over analitica files
 
-    for i in range(4):
-    
-        er, cr = np.loadtxt( "analitica/Er_{:.5f}_cbar_1.000.dat".format(10**(-1-i)), unpack = True )
+    for et in [1.0e-04, 1.0e-03, 1.0e-02, 1.0e-01]:
 
-        intm = post.analiticInterphase( er, cr )
+        Er, Cg, Cl, Ei, Tr = vdw.rhoNonUniformLambda( Tt = 0.99, Tb = 0.99, Et = et )
     
-        plabel = "$E_{r_{max}}=10^{" + "{}".format(-1-i) + "}$"
+        plabel = "$E_{r_{max}}=" + "{:.0e}$".format(et)
         
-        plt.plot( [  (z-intm)/er[-1] for z in er  ],  cr, label = plabel)
-
+        plt.plot( np.concatenate( [ [(z-Er[Ei]) / et  for z in Er[:Ei]], [(z-Er[Ei]) / et  for z in Er[Ei:]] ]  ) ,
+                  np.concatenate( [ Cl[:Ei], Cg[Ei:] ] ),
+                  label = plabel)
 
         
 

@@ -1,6 +1,4 @@
-import os
-
-import postLBRun as post
+import vdWColumn as vdw
 
 import matplotlib.pyplot as plt
 
@@ -15,11 +13,6 @@ sigma_0 = np.loadtxt( "sigma_1.25.dat", unpack = True )
 sigma_1 = np.loadtxt( "sigma_0.125.dat", unpack = True )
 
 sigma_2 = np.loadtxt( "sigma_0.0125.dat", unpack = True )
-
-
-# Solucion analitica
-
-vdW = np.loadtxt( "vdW.dat", unpack = True )
 
 
 plt.style.use('../custom.mplstyle') 
@@ -70,9 +63,30 @@ plt.plot( sigma_2[5],
           mfc = 'None')
 
 
-plt.plot( vdW[1], vdW[0], label = 'van der Waals')
-plt.plot( vdW[2], vdW[0], linestyle = '-')
-        
+
+
+
+
+# Solucion analitica
+
+analitica = [ [], [], [] ]
+
+for T in np.linspace(0.5, 0.99, (0.99-0.5)/0.01):
+    
+    cl, cg = vdw.interphaseDensities(T)
+
+    analitica[0].append(T)
+
+    analitica[1].append(cl)
+
+    analitica[2].append(cg)
+
+
+    
+plt.plot( analitica[1], analitica[0], label = 'van der Waals')
+plt.plot( analitica[2], analitica[0], linestyle = '-')
+
+
 
 
 # Labels

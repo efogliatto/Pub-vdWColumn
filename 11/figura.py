@@ -1,6 +1,6 @@
 import os
 
-import postLBRun as post
+import vdWColumn as vdw
 
 import matplotlib.pyplot as plt
 
@@ -18,84 +18,53 @@ b = 4.0
 plt.style.use('../custom.mplstyle')
 
 
-# Move over Caso folders
+# # Move over Caso folders
 
-for i in range(4):
+# for i in range(4):
 
-    fn = "/users/fogliate/LBRun/vdWColumn/fixedT/CasoC/Caso{}/processor0/2000000/rho".format(i)
+#     fn = "/users/fogliate/LBRun/vdWColumn/fixedT/CasoC/Caso{}/processor0/2000000/rho".format(i)
 
-    if os.path.exists( fn ):
+#     if os.path.exists( fn ):
 
-        os.system("cp {} rho_{}".format(fn,i))
+#         os.system("cp {} rho_{}".format(fn,i))
         
     
-    rho = post.scalarProfile( "rho_{}".format(i), step = 3, offset = 1 )
+#     rho = post.scalarProfile( "rho_{}".format(i), step = 3, offset = 1 )
 
-    intm, ll, rl = post.interphase( rho, width = 0.05 )
+#     intm, ll, rl = post.interphase( rho, width = 0.05 )
         
-    plt.plot([ z/(len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = "{} l.u".format(len(rho) - 1))   
+#     plt.plot([ z/(len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = "{} l.u".format(len(rho) - 1))   
 
     
 
 
-
-# Solucion analitica
-
-er, cr = np.loadtxt( "Tr_0.990_0.800_cbar_1.000.dat", unpack = True )
-
-intm = post.analiticInterphase( er, cr )
+Er, C_g, C_l, Ei = vdw.rhoNonUniformLambda( Tb = 0.8 )
 
 
 
-# Split profiles for better plotting
+# plt.plot( [  z/er[-1] for z in erl  ],
+#           crl,
+#           # label = 'Berberan-Santos',
+#           linestyle = 'None',
+#           marker = 'o',
+#           mfc = 'None')
 
-erl, crl, erv, crv = [], [], [], []
-
-for i in range( len(er) -1 ):
-
-    if np.isclose(er[i], er[i+1]):
-
-        erl = er[:i]
-
-        erg = er[i+1:]
-
-        crl = cr[:i]
-
-        crg = cr[i+1:]        
-
-
-erl = erl[::-100]
-
-crl = crl[::-100]
-
-erg = erg[::100]
-
-crg = crg[::100]
-
-
-plt.plot( [  z/er[-1] for z in erl  ],
-          crl,
-          # label = 'Berberan-Santos',
-          linestyle = 'None',
-          marker = 'o',
-          mfc = 'None')
-
-plt.plot( [  z/er[-1] for z in erg  ],
-          crg,
-          linestyle = 'None',
-          marker = 'o',
-          mfc = 'None')        
+# plt.plot( [  z/er[-1] for z in erg  ],
+#           crg,
+#           linestyle = 'None',
+#           marker = 'o',
+#           mfc = 'None')        
 
     
 
-# Labels
+# # Labels
 
-plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
+# plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
-plt.xlabel(r'$z \, / \, H$')
+# plt.xlabel(r'$z \, / \, H$')
 
-plt.xlim((0.3,0.6))
+# plt.xlim((0.3,0.6))
 
-plt.legend(loc='best')        
+# plt.legend(loc='best')        
 
-plt.savefig( '11.png', format='png', dpi=600 )
+# plt.savefig( '11.png', format='png', dpi=600 )
