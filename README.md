@@ -11,7 +11,7 @@ Descripción de figuras
 5: Perfil de densidad para diferentes Er. Berberan-Santos
 6: Convergencia en malla para perfil de densidad. Er = 1e-3
 7: Convergencia en malla para perfil de densidad. Er = 1e-1
-8: Fracci\'on de l\'iuido en funci\'on de Tr
+8: Fracci\'on de fluido en funci\'on de Tr
 9: Fraccion de volumen en funci\'on de densidad media
 10: Perfiles de densidad con gradiente de temperatura fijo. 3000 lu
 11: Convergencia en malla para Tb = 0.8

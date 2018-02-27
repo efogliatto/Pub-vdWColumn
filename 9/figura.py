@@ -18,7 +18,7 @@ plt.plot( data[:,1], data[:,2] / 300., label = 'LB', linestyle = 'None', marker 
 
 # Solucion analitica
 
-vdw = np.loadtxt( "analitica/Inter_cbar_Tr_0.9.dat" )
+vdw = np.loadtxt( "Inter_cbar_Tr_0.9.dat" )
 
 plt.plot( vdw[:,0], vdw[:,1], label = 'Berberan-Santos' )
 

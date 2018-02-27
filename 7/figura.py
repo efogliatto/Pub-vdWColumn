@@ -1,6 +1,8 @@
 import os
 
-import postLBRun as post
+import vdWColumn as vdw
+
+import vdWColumn.postLBRun as post
 
 import matplotlib.pyplot as plt
 
@@ -9,10 +11,7 @@ import numpy as np
 
 
 
-
 # van Der Waals properties
-
-Er_max = 1e-01
 
 b = 4.0
 
@@ -23,90 +22,48 @@ plt.style.use('../custom.mplstyle')
 
 for i in range(4):
 
-    fn = "/users/fogliate/LBRun/vdWColumn/Berberan-Santos_et_al_2002/CasoI/Caso{}/processor0/2000000/rho".format(i)
+
+    fn = "/users/fogliate/LBRun/vdWColumn/Berberan-Santos_et_al_2002/CasoI/Caso{}".format(i)
 
     if os.path.exists( fn ):
 
-        os.system("cp {} rho_{}".format(fn,i))
+        rho = post.scalarProfile( fn, 'rho', time = 'latest' )
+
+        with open('rho_{}'.format(i),'w') as f:
+
+            for r in rho:
+
+                f.write('{}\n'.format(r))
+
         
+        
+    rho = np.loadtxt( 'rho_{}'.format(i) )
+
+    intm, ll, rl = post.interphase( rho, width = 0.05 )                
+        
+    plt.plot([ z/(len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = "{} l.u".format(len(rho) - 1))   
+
     
-    rho = post.scalarProfile( "rho_{}".format(i), step = 3, offset = 1 )
-
-    intm, ll, rl = post.interphase( rho, width = 0.05 )
-
-    # plt.plot([ (z-intm)/(len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = "{} l.u".format(len(rho) - 1))
-    plt.plot([ z/(len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = "{} l.u".format(len(rho) - 1))
-
 
 
 # Solucion analitica
 
-er, cr = np.loadtxt( "analitica/Er_0.10000_cbar_1.000.dat", unpack = True )
+Er, Cg, Cl, Ei, Tr = vdw.rhoNonUniformLambda( Tt = 0.99, Tb = 0.99, Et = 0.1 )
 
-intm = post.analiticInterphase( er, cr )
+sp = 250
 
+plt.plot( Er[Ei::-sp]/Er[-1], Cl[Ei::-sp], linestyle = 'None',  marker = 'o', mfc = 'None')
 
-
-# Split profiles for better plotting
-
-erl, crl, erv, crv = [], [], [], []
-
-for i in range( len(er) -1 ):
-
-    if np.isclose(er[i], er[i+1]):
-
-        erl = er[:i]
-
-        erg = er[i+1:]
-
-        crl = cr[:i]
-
-        crg = cr[i+1:]        
+plt.plot( Er[Ei::sp]/Er[-1], Cg[Ei::sp], linestyle = 'None',  marker = 'o', mfc = 'None')
 
 
-erl = erl[::-100]
-
-crl = crl[::-100]
-
-erg = erg[::100]
-
-crg = crg[::100]
-
-
-# plt.plot( [  (z-intm)/er[-1] for z in erl  ],
-#           crl,
-#           label = 'Berberan-Santos',
-#           linestyle = 'None',
-#           marker = 'o',
-#           mfc = 'None')
-
-# plt.plot( [  (z-intm)/er[-1] for z in erg  ],
-#           crg,
-#           linestyle = 'None',
-#           marker = 'o',
-#           mfc = 'None')
-        
-plt.plot( [  z/er[-1] for z in erl  ],
-          crl,
-          # label = 'Berberan-Santos',
-          linestyle = 'None',
-          marker = 'o',
-          mfc = 'None')
-
-plt.plot( [  z/er[-1] for z in erg  ],
-          crg,
-          linestyle = 'None',
-          marker = 'o',
-          mfc = 'None')
-
+    
 
 # Labels
 
 plt.ylabel(r'$\rho_r$', rotation='horizontal', labelpad=15)
 
 plt.xlabel(r'$z \, / \, H$')
-
-# plt.xlim((-0.4,0.4))
 
 plt.legend(loc='best')        
 

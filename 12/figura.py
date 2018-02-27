@@ -1,6 +1,8 @@
 import os
 
-import postLBRun as post
+import vdWColumn as vdw
+
+import vdWColumn.postLBRun as post
 
 import matplotlib.pyplot as plt
 
@@ -24,70 +26,42 @@ sigmaList = [0.0125, 0.125, 1.25]
 
 for i,sigma in zip( range(3), sigmaList ):
 
-    fn = "/users/fogliate/LBRun/vdWColumn/fixedT/CasoD/Caso{}/processor0/2000000/rho".format(i)
+
+    fn = "/users/fogliate/LBRun/vdWColumn/fixedT/CasoD/Caso{}".format(i)
 
     if os.path.exists( fn ):
 
-        os.system("cp {} rho_{}".format(fn,i))
+        rho = post.scalarProfile( fn, 'rho', time = 'latest' )
+
+        with open('rho_{}'.format(i),'w') as f:
+
+            for r in rho:
+
+                f.write('{}\n'.format(r))
+
         
-    
-    rho = post.scalarProfile( "rho_{}".format(i), step = 3, offset = 1 )
+        
+    rho = np.loadtxt( 'rho_{}'.format(i) )
 
     intm, ll, rl = post.interphase( rho, width = 0.05 )
 
     label = '$\sigma = $' + '{}'.format(sigma)
-    
+
     plt.plot([ z/(len(rho)-1) for z in range(len(rho))], rho * 3.0 * b, label = label)   
 
     
 
-
+    
 # Solucion analitica
 
-er, cr = np.loadtxt( "Tr_0.990_0.800_cbar_1.000.dat", unpack = True )
+Er, Cg, Cl, Ei, Tr = vdw.rhoNonUniformLambda( Tt = 0.99, Tb = 0.8 )
 
-intm = post.analiticInterphase( er, cr )
+sp = 100
 
+plt.plot( Er[Ei::-sp]/Er[-1], Cl[Ei::-sp], linestyle = 'None',  marker = 'o', mfc = 'None')
 
+plt.plot( Er[Ei::sp]/Er[-1], Cg[Ei::sp], linestyle = 'None',  marker = 'o', mfc = 'None')    
 
-# Split profiles for better plotting
-
-erl, crl, erv, crv = [], [], [], []
-
-for i in range( len(er) -1 ):
-
-    if np.isclose(er[i], er[i+1]):
-
-        erl = er[:i]
-
-        erg = er[i+1:]
-
-        crl = cr[:i]
-
-        crg = cr[i+1:]        
-
-
-erl = erl[::-100]
-
-crl = crl[::-100]
-
-erg = erg[::100]
-
-crg = crg[::100]
-
-
-plt.plot( [  z/er[-1] for z in erl  ],
-          crl,
-          # label = 'Berberan-Santos',
-          linestyle = 'None',
-          marker = 'o',
-          mfc = 'None')
-
-plt.plot( [  z/er[-1] for z in erg  ],
-          crg,
-          linestyle = 'None',
-          marker = 'o',
-          mfc = 'None')        
 
     
 
