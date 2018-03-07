@@ -26,15 +26,18 @@ plt.plot( file1[0]/3000, file1[3]*12, label = r'$T_r=0.50$', linestyle = '-')
 
 Tlist = [0.99, 0.7, 0.5]
 
-sp = 250
+mkstyle = ['s','^','o']
 
-for T in Tlist:
+
+sp = 300
+
+for T,mk in zip(Tlist, mkstyle):
 
     Er, Cg, Cl, Ei, Tr = vdw.rhoNonUniformLambda( Tt = T, Tb = T )
 
-    plt.plot( 1000*Er[Ei::-sp], Cl[Ei::-sp], linestyle = 'None', color = 'k',  marker = 'o',  mfc = 'None')
+    plt.plot( 1000*Er[Ei::-sp], Cl[Ei::-sp], linestyle = 'None', color = 'k',  marker = mk,  mfc = 'None')
 
-    plt.plot( 1000*Er[Ei::sp], Cg[Ei::sp], linestyle = 'None', color = 'k',  marker = 'o',  mfc = 'None')
+    plt.plot( 1000*Er[Ei::sp], Cg[Ei::sp], linestyle = 'None', color = 'k',  marker = mk,  mfc = 'None')
 
 
         
